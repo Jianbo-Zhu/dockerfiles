@@ -17,6 +17,8 @@ RUN \
 
 USER activemq
 
+COPY activemq.xml /opt/activemq/conf/activemq.xml
+
 WORKDIR $ACTIVEMQ_HOME
 EXPOSE $ACTIVEMQ_TCP $ACTIVEMQ_HTTP
 
