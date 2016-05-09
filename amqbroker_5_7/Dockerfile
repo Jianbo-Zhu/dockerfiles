@@ -7,7 +7,7 @@ ENV ACTIVEMQ_TCP=61616 ACTIVEMQ_HTTP=8989
 ENV ACTIVEMQ_HOME /opt/activemq
 
 RUN \
-    curl -O http://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz && \
+    curl -O http://archive.apache.org/dist/activemq/apache-activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz && \
     mkdir -p /opt && \
     tar xf $ACTIVEMQ-bin.tar.gz -C /opt/ && \
     rm $ACTIVEMQ-bin.tar.gz && \
