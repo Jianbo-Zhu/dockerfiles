@@ -222,6 +222,12 @@ if [ -e "$MEDIAWIKI_SHARED/composer.lock" -a -e "$MEDIAWIKI_SHARED/composer.json
 	php composer.phar install --no-dev
 fi
 
+if [ $ENABLE_SMW = true ]; then
+	curl -sS https://getcomposer.org/installer | php
+	php composer.phar require mediawiki/semantic-media-wiki "2.4.5" --update-no-dev
+	php composer.phar update --lock
+fi
+
 # If LocalSettings.php exists, then attempt to run the update.php maintenance
 # script. If already up to date, it won't do anything, otherwise it will
 # migrate the database if necessary on container startup. It also will
