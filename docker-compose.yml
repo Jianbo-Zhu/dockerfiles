@@ -4,6 +4,7 @@ db:
     - MYSQL_ROOT_PASSWORD=password
   ports:
     - 3306:3306
+  restart: always
 web:
   build: .
   ports:
@@ -19,6 +20,7 @@ web:
   volumes:
     - ./data:/data:rw
   hostname: modeldr.co.uk
+  restart: always
   environment:
     - MEDIAWIKI_SITE_SERVER=//modeldr.co.uk
     - MEDIAWIKI_SITE_NAME=My Awesome Wiki
