@@ -165,12 +165,16 @@ if [ -d "$MEDIAWIKI_SHARED" ]; then
 		echo >&2 'info: enabling ssl'
 		a2enmod ssl
 
+		rm -f /etc/apache2/sites-enabled/*
+
 		cp "$MEDIAWIKI_SHARED/ssl.key" /etc/apache2/ssl.key
 		cp "$MEDIAWIKI_SHARED/ssl.crt" /etc/apache2/ssl.crt
 		cp "$MEDIAWIKI_SHARED/ssl.bundle.crt" /etc/apache2/ssl.bundle.crt
 	elif [ -e "/etc/apache2/mods-enabled/ssl.load" ]; then
 		echo >&2 'warning: disabling ssl'
 		a2dismod ssl
+		rm -f /etc/apache2/sites-enabled/*
+		ln -s /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 	fi
 elif [ $MEDIAWIKI_ENABLE_SSL = true ]; then
 	echo >&2 'error: Detected MEDIAWIKI_ENABLE_SSL flag but found no data volume';
