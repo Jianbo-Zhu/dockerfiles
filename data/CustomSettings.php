@@ -1,5 +1,5 @@
 <?php
-enableSemantics('35.167.88.243');
+enableSemantics('localhost');
 
 $wgShowExceptionDetails = true;
 $wgShowDBErrorBacktrace = true;
